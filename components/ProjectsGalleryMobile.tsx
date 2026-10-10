@@ -57,7 +57,7 @@ export default function ProjectsGalleryMobile() {
             </h2>
           </div>
           <p className="w-[307px] max-w-full text-[14px] font-medium leading-[20px] text-[#64748b]">
-            Completed PEB structures across Tamil Nadu and beyond.
+            Completed Projects across India.
           </p>
         </div>
 

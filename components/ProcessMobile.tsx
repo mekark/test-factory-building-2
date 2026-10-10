@@ -44,7 +44,7 @@ const STEPS: Step[] = [
   },
   {
     number: "03",
-    title: "Civil Works & Foundations",
+    title: "Civil Works & PEB",
     description:
       "Disciplined sequencing of civil works, steel framing and infrastructure.",
     icon: "/process/mobile/hard-hat.svg",
@@ -89,7 +89,7 @@ export default function ProcessMobile() {
         <div className="flex w-full flex-col items-start gap-[6px]">
           <h2 className="w-full text-[28px] font-bold leading-[34px] text-[#0f172a]">
             Our <span className="text-[#ed1d23]">Turnkey Factory</span>{" "}
-            Construction
+            Construction Process
           </h2>
           <p className="w-full text-[14px] font-normal leading-[normal] text-[#64748b]">
             As a turnkey factory contractor and industrial EPC company, we take
