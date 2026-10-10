@@ -9,18 +9,15 @@ const FORM_ENDPOINT = "/api/enquiry-form";
 const THANK_YOU_URL = "/thank-you";
 
 export const INDUSTRY_TYPES = [
-  "Steel & Metal Industries",
-  "Electronics Manufacturing",
-  "Chemical & Process",
-  "Power Plants",
-  "Automobile Industry",
-  "Pharmaceutical Facilities",
-  "FMCG & Consumer Goods",
-  "Textile & Processing Units",
-  "Cold Storage Facilities",
-  "Windmill Infrastructure",
-  "Cleanroom Environments",
-  "Industrial HVAC Systems",
+ "Automotive, EV & Auto Components",
+  "Engineering, Machinery & Heavy Manufacturing",
+  "Electronics, Electrical & Semiconductor",
+  "Food, Beverage & FMCG",
+  "Pharmaceutical, Chemical & Life Sciences",
+  "Textile, Apparel & Leather",
+  "Metals, Steel & Building Materials",
+  "Plastics, Packaging & Consumer Products",
+  "Renewable Energy & Clean-Tech Manufacturing",
 ];
 
 export const SQFT_OPTIONS = [

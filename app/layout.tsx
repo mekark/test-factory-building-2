@@ -13,9 +13,9 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Mekark Structures Pvt. Ltd.",
+  title: "Turnkey Factory EPC Construction Company – Industrial Factory Turnkey EPC Contractor ",
   description:
-    "Mekark delivers industrial construction solutions for factories, plant infrastructure, utility systems, and manufacturing facilities.",
+    "Leading Turnkey Factory EPC & Turnkey Factory Construction Company – Turnkey Factory EPC expertise in In House PEB Manufacturing, Civil, PEB, MEP and Seamless Execution servicing the needs of Turnkey Industrial Building Contractor & Turnkey Industrial Construction Company",
 };
 
 export default function RootLayout({
