@@ -7,7 +7,7 @@ import { useCanvasZoom } from "./useCanvasZoom";
 
 /* ============================================================
    GALLERY TILES
-   x/y/w/h place each tile on the 1920×1427 desktop canvas (a 2×2 grid, 25px
+   x/y/w/h place each tile on the 1920×1816 desktop canvas (a 2×3 grid, 25px
    gap). `crop` is Figma's custom image placement inside the tile; `radius`
    rounds only the grid's outer corners. Below 1280px the tiles flow into a
    2-column grid and these values are ignored.
@@ -48,7 +48,7 @@ const TILES: Tile[] = [
     alt: "Industrial warehouse with a brown and glass entrance facade",
     x: 80, y: 761.8, w: 867.5, h: 488.5,
     radius: "xl:rounded-bl-[32px]",
-    crop: { left: "-0.02%", top: "-3.89%", width: "108.03%", height: "108.02%" },
+    crop: { left: "-11.16%", top: "-2.25%", width: "119.17%", height: "119.15%" },
   },
   {
     id: "d",
@@ -56,6 +56,22 @@ const TILES: Tile[] = [
     alt: "Blue steel warehouse on an industrial estate",
     x: 972.5, y: 761.8, w: 867.5, h: 488.5,
     radius: "xl:rounded-br-[32px]",
+  },
+  {
+    id: "e",
+    src: "/projects/gallery-5.webp",
+    alt: "Large white industrial warehouse with a long sloping roof",
+    x: 80, y: 1275.3, w: 867.5, h: 488.5,
+    radius: "xl:rounded-bl-[32px]",
+    crop: { left: "-3.05%", top: "-16.65%", width: "116.44%", height: "116.64%" },
+  },
+  {
+    id: "f",
+    src: "/projects/gallery-6.webp",
+    alt: "White and blue warehouse with loading docks and a parked truck",
+    x: 972.5, y: 1275.3, w: 867.5, h: 488.5,
+    radius: "xl:rounded-br-[32px]",
+    crop: { left: "-10.82%", top: "-10.66%", width: "110.81%", height: "110.75%" },
   },
 ];
 
@@ -69,7 +85,7 @@ export default function ProjectsGallerySection() {
 
   return (
     /* ==========================================================
-       SECTION WRAPPER — full-bleed #f9f6f7, 1920×1446 design canvas
+       SECTION WRAPPER — full-bleed #f9f6f7, 1920×1816 design canvas
        ========================================================== */
     <section className="overflow-hidden bg-[#f9f6f7] font-sans">
       {/* ---------- Mobile / tablet layout (below 1280px): separate component, see ProjectsGalleryMobile.tsx ---------- */}
@@ -80,14 +96,8 @@ export default function ProjectsGallerySection() {
         {/* ---------- Design canvas (zoomed to the viewport on desktop) ---------- */}
         <div
           ref={canvasRef}
-          className="canvas-zoom relative mx-auto w-full px-5 py-12 sm:px-8 sm:py-16 xl:h-[1427px] xl:w-[1920px] xl:p-0"
+          className="canvas-zoom relative mx-auto w-full px-5 py-12 sm:px-8 sm:py-16 xl:h-[1816px] xl:w-[1920px] xl:p-0"
         >
-          {/* ---------- Background: soft red glows in the top-right and bottom-left corners ---------- */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_360px_400px_at_100%_0,rgba(237,32,36,0.32)_0,rgba(237,32,36,0)_60%),radial-gradient(ellipse_400px_440px_at_0_100%,rgba(237,32,36,0.32)_0,rgba(237,32,36,0)_60%)] xl:bg-[radial-gradient(ellipse_927px_997.6px_at_100%_0,rgba(237,32,36,0.32)_0,rgba(237,32,36,0)_60%),radial-gradient(ellipse_989px_1064.7px_at_0_100%,rgba(237,32,36,0.32)_0,rgba(237,32,36,0)_60%)]"
-          />
-
           {/* ======================================================
               HEADING — eyebrow, two-tone title, sub-heading
               ====================================================== */}
@@ -106,7 +116,7 @@ export default function ProjectsGallerySection() {
           </div>
 
           {/* ======================================================
-              PHOTO GRID — four tiles, rounded only on the outer corners
+              PHOTO GRID — six tiles, rounded only on the outer corners
               ====================================================== */}
           <div className="relative mt-8 grid grid-cols-2 gap-3 sm:gap-4 xl:mt-0 xl:block">
             {TILES.map((tile) => {
@@ -153,18 +163,6 @@ export default function ProjectsGallerySection() {
                 </div>
               );
             })}
-          </div>
-
-          {/* ======================================================
-              VIEW ALL — red button, centred under the grid
-              ====================================================== */}
-          <div className="relative mt-8 flex justify-center xl:absolute xl:left-[calc(50%+0.5px)] xl:top-[1302.3px] xl:mt-0 xl:-translate-x-1/2">
-            <a
-              href="#projects"
-              className="flex items-center justify-center rounded-[8.809px] bg-[#c4161c] px-[32px] py-[16px] text-[20px] font-extrabold leading-[normal] text-[#f5f5f5] drop-shadow-[0px_8.809px_17.618px_rgba(196,22,28,0.3)] transition-colors hover:bg-[#ad1318] xl:px-[50px] xl:py-[20px] xl:text-[24px]"
-            >
-              View All →
-            </a>
           </div>
         </div>
       </div>

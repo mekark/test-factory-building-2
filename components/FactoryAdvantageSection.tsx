@@ -1,21 +1,46 @@
 "use client";
 
 import Image from "next/image";
-import { CSSProperties, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import FactoryAdvantageMobile from "./FactoryAdvantageMobile";
 import { useCanvasZoom } from "./useCanvasZoom";
 
 /* ============================================================
    CONTENT DATA
-   `indent` is the staggered left padding of each row in Figma (px, desktop).
+   each row opens to reveal its description.
    ============================================================ */
 
 const POINTS = [
-  { label: "3000+ MT High-Capacity Fabrication", width: 700 },
-  { label: "Fully Automated Steel Production", width: 672 },
-  { label: "Advanced CNC-Based Precision Engineering", width: 645 },
-  { label: "ISO-Certified Quality Systems", width: 645 },
-  { label: "30–40% Faster Project Delivery", width: 672 },
+  {
+    label: "Turnkey Factory Construction",
+    description:
+      "We take single-point accountability from design to handover. As a Turnkey Factory Construction Company and factory shed construction company, we ensure that our engineering, manufacturing, procurement and erection are done under one umbrella, which ensures that your project stays on track and within budget.",
+  },
+  {
+    label: "In-House Structural Engineers",
+    description:
+      "As an industrial factory building contractor, we use BIM-based structural analysis to design every structure accurately before work begins. This makes us a dependable factory building contractor for large plants, with fewer on-site design changes.",
+  },
+  {
+    label: "Foundations & Structures Designed for Your Loads",
+    description:
+      "We customise the design for your machinery, overhead cranes, mezzanines and floor loads. As a factory construction contractor, we size footings, pedestals and crane gantry supports for safe load transfer and vibration control.",
+  },
+  {
+    label: "Factory Expansion Without Disrupting Production",
+    description:
+      "As your industrial construction contractor, Mekark connects design, civil works, structural steel, MEP and project execution through one EPC delivery model.",
+  },
+  {
+    label: "Fully Automated Steel Production",
+    description:
+      "Factory extensions and manufacturing plant expansion can be considered during the original engineering, reducing what needs to be reworked when the facility grows.",
+  },
+  {
+    label: "Safe Construction & Pre-Handover Inspection",
+    description:
+      "ISO 9001:2015 and CE-certified processes support fabrication quality with documentation your project and compliance teams can verify.",
+  },
 ] as const;
 
 /* ============================================================
@@ -24,7 +49,7 @@ const POINTS = [
 
 export default function FactoryAdvantageSection() {
   const canvasRef = useRef<HTMLDivElement>(null);
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   useCanvasZoom(canvasRef);
 
   return (
@@ -58,8 +83,8 @@ export default function FactoryAdvantageSection() {
             />
 
             {/* Layers 2–4 (desktop only): red L-shaped panel + dark gradient overlay */}
-            <div className="absolute left-[1004px] top-0 hidden h-[701.333px] w-[916px] bg-[#e60f1a] xl:block" />
-            <div className="absolute left-[964px] top-[554.67px] hidden h-[183px] w-[956px] bg-[#e60f1a] xl:block" />
+            <div className="absolute left-[1004px] top-0 hidden h-[568px] w-[916px] bg-[#e60f1a] xl:block" />
+            <div className="absolute left-[1047px] top-[514px] hidden h-[224px] w-[873px] bg-[#e60f1a] xl:block" />
             <Image
               width={916}
               height={399}
@@ -74,41 +99,41 @@ export default function FactoryAdvantageSection() {
           </div>
 
           {/* ======================================================
-              COPY — heading, sub-heading and the five check points
+              COPY — heading, sub-heading and the six points
               ====================================================== */}
           <div className="relative z-10 bg-[#e60f1a] bg-[linear-gradient(180deg,#2a0306_0%,#e60f1a_55%)] px-5 pb-12 pt-10 sm:px-8 sm:pt-12 xl:static xl:bg-none xl:p-0">
             {/* Heading + sub-heading stacked (22px gap) so a wrapped heading never overlaps the sub-heading */}
-            <div className="xl:absolute xl:left-[1089.33px] xl:top-[49.33px] xl:flex xl:w-[783px] xl:flex-col xl:gap-[22px]">
+            <div className="xl:absolute xl:left-[1099px] xl:top-[46px] xl:flex xl:w-[783px] xl:flex-col xl:gap-[10px]">
               {/* Heading (Bold 66px, #030303) */}
-              <h2 className="text-[30px] font-extrabold leading-[1.15] tracking-[-0.03em] text-white sm:text-[40px] xl:text-[66px] xl:font-bold xl:leading-[69.333px] xl:tracking-normal xl:text-[#030303]">
-                Why Industries Choose Mekark for Their Factory Buildings
+              <h2 className="text-[30px] font-extrabold leading-[1.15] tracking-[-0.03em] text-white sm:text-[40px] xl:text-[53.333px] xl:font-extrabold xl:leading-[60px] xl:tracking-[-1.3333px] xl:text-[#030303]">
+                Why Top Industries <br className="hidden xl:block" />
+                Choose Mekark
               </h2>
 
               {/* Sub-heading (Regular 20px, #424242) */}
-              <p className="mt-4 text-[16px] font-normal leading-[1.5] text-[#ffd0d3] sm:text-[18px] xl:mt-0 xl:text-[20px] xl:leading-normal xl:text-[#424242]">
-                Leading the industrial construction sector with unmatched capacity
-                and precision.
+              <p className="mt-4 text-[16px] font-normal leading-[1.5] text-[#ffd0d3] sm:text-[18px] xl:mt-0 xl:w-[709px] xl:text-[21.333px] xl:leading-[28px] xl:text-[#424242]">
+                India&apos;s Leading Industrial Factory Construction &amp; Expansion
+                Company
               </p>
             </div>
 
             {/* Points list: right-aligned rows with staggered widths, bottom dividers and chevrons */}
-            <ul className="mt-8 flex flex-col gap-[14px] xl:absolute xl:left-[1071px] xl:top-[322px] xl:mt-0 xl:w-[750px] xl:items-end xl:gap-[10px]">
+            <ul className="mt-8 flex flex-col gap-[14px] xl:absolute xl:left-[1099px] xl:top-[216px] xl:mt-0 xl:h-[523px] xl:w-[750px] xl:items-end xl:gap-[10px] xl:overflow-y-auto xl:[scrollbar-width:none] xl:[&::-webkit-scrollbar]:hidden">
               {POINTS.map((point, i) => (
                 <li
                   key={point.label}
-                  className="border-b-[1.333px] border-[#e58282] text-white xl:w-[var(--row-w)]"
-                  style={{ "--row-w": `${point.width}px` } as CSSProperties}
+                  className={`text-white xl:w-[718px] ${i === POINTS.length - 1 ? "" : "border-b-[1.333px] border-[#e58282]"}`}
                 >
                   <button
                     type="button"
                     aria-expanded={openIndex === i}
                     onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                    className="flex w-full cursor-pointer items-center gap-[10px] text-left xl:pb-[13.333px] xl:pt-[12px]"
+                    className="flex w-full cursor-pointer items-center gap-[10px] font-sans text-left xl:pb-[13.333px] xl:pr-[19px] xl:pt-[12px]"
                   >
-                    <span className="text-[18px] font-bold leading-[26px] sm:text-[22px] xl:w-[27px] xl:shrink-0 xl:text-[24px] xl:leading-[29.867px]">
+                    <span className="text-[18px] font-semibold leading-[26px] sm:text-[22px] xl:w-[27px] xl:shrink-0 xl:text-[24px] xl:leading-[29.867px]">
                       {i + 1}.
                     </span>
-                    <span className="block flex-1 text-[18px] font-bold leading-[26px] sm:text-[22px] sm:leading-[30px] xl:text-[24px] xl:leading-[29.867px]">
+                    <span className="block flex-1 text-[18px] font-semibold leading-[26px] sm:text-[22px] sm:leading-[30px] xl:w-[492px] xl:flex-none xl:text-[24px] xl:leading-[29.867px]">
                       {point.label}
                     </span>
                     <img
@@ -116,17 +141,15 @@ export default function FactoryAdvantageSection() {
                       alt=""
                       width={30}
                       height={30}
-                      className={`block size-[30px] shrink-0 transition-transform duration-300 ${openIndex === i ? "-rotate-90" : "rotate-90"}`}
+                      className={`block size-[30px] shrink-0 xl:ml-auto transition-transform duration-300 ${openIndex === i ? "-rotate-90" : "rotate-90"}`}
                     />
                   </button>
                   <div
                     className={`grid transition-[grid-template-rows] duration-300 ${openIndex === i ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
                   >
                     <div className="overflow-hidden">
-                      <p className="pb-[14px] pl-[37px] pr-[40px] text-[17px] font-medium leading-normal text-white">
-                        Dummy text: Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
+                      <p className="pb-[14px] pl-[37px] pr-[40px] text-[17px] font-medium leading-normal text-white xl:w-[669px]">
+                        {point.description}
                       </p>
                     </div>
                   </div>

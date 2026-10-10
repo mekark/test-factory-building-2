@@ -58,7 +58,7 @@ export default function CtaSection() {
     /* ==========================================================
        SECTION WRAPPER — 1920×1034 design canvas
        ========================================================== */
-    <section id="contact" className="overflow-hidden bg-[#c4161c] font-sans">
+    <section id="contact" className="overflow-hidden bg-[#080b0f] font-sans">
       {/* ---------- Mobile / tablet layout (below 1280px): separate component, see CtaMobile.tsx ---------- */}
       <CtaMobile />
 
@@ -80,10 +80,16 @@ export default function CtaSection() {
             />
           </div>
 
-          {/* ---------- Background: red wash that fades to the photo on the right ---------- */}
+          {/* ---------- Background: dark wash, strongest on the left so the copy stays readable ---------- */}
           <div
             aria-hidden
-            className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(237,32,36,0.94),rgba(237,32,36,0.86))] xl:inset-x-0 xl:bottom-auto xl:top-[-0.33px] xl:h-[1034px] xl:bg-[linear-gradient(180deg,rgba(4,11,17,0.09)_36.265%,rgba(4,10,16,0.197)_70.394%,rgba(4,9,15,0.38)_100%),linear-gradient(90deg,rgb(237,32,36)_0%,rgba(237,32,36,0.98)_21.195%,rgba(237,32,36,0.68)_55.672%,rgba(8,8,8,0)_93.011%)]"
+            className="absolute inset-0 -z-10 xl:inset-x-0 xl:bottom-auto xl:top-[-0.33px] xl:h-[1034px] xl:bg-[linear-gradient(-62.149deg,rgba(16,21,25,0)_0.646%,rgb(8,11,15)_83.168%)]"
+          />
+
+          {/* ---------- Background: soft red glow behind the form ---------- */}
+          <div
+            aria-hidden
+            className="absolute left-[1486px] top-[-62.33px] -z-10 size-[774px] rounded-full bg-[rgba(228,0,21,0.3)] opacity-[0.93] blur-[61.667px]"
           />
 
           {/* ======================================================
@@ -96,10 +102,10 @@ export default function CtaSection() {
             <div className="flex w-full flex-col items-start gap-[20px] xl:w-[837.333px] xl:shrink-0">
               {/* Heading + intro paragraph */}
               <div className="flex w-full flex-col items-start gap-[16px] xl:gap-[25.467px]">
-                <h2 className="w-full text-[36px] font-extrabold leading-[1.15] text-[#212226] sm:text-[52px] xl:text-[80px] xl:leading-[81.6px]">
+                <h2 className="w-full text-[36px] font-extrabold leading-[1.15] text-white sm:text-[52px] xl:text-[80px] xl:leading-[81.6px]">
                   Start Your Factory Construction Project
                 </h2>
-                <p className="w-full text-[17px] font-medium leading-[1.55] text-white sm:text-[20px] xl:text-[24px] xl:leading-[37.333px]">
+                <p className="w-full text-[17px] font-medium leading-[1.55] text-white/70 sm:text-[20px] xl:text-[24px] xl:leading-[37.333px]">
                   Speak with our team about your manufacturing facility, industrial
                   plant, utility infrastructure, or heavy engineering project
                   requirements. We deliver turnkey solutions with a focus on
@@ -111,7 +117,7 @@ export default function CtaSection() {
               <div className="flex w-full flex-col items-start gap-[24px]">
                 {/* Prompt + ticks (fixed 201.48px block on desktop) */}
                 <div className="relative w-full xl:h-[201.48px]">
-                  <p className="w-full text-[18px] font-bold leading-[1.5] text-[#212226] sm:text-[20px] xl:text-[24px] xl:leading-[36px]">
+                  <p className="w-full text-[18px] font-semibold leading-[1.5] text-white/80 sm:text-[20px] xl:text-[24px] xl:leading-[36px]">
                     Discuss your manufacturing facility, industrial plant, or heavy
                     infrastructure requirement with our team.
                   </p>
@@ -127,7 +133,7 @@ export default function CtaSection() {
                             className={`flex items-center gap-[16px] ${i === 0 ? "xl:min-w-[230px]" : ""}`}
                           >
                             {/* Tick badge: half-transparent red circle with a ✓ */}
-                            <span className="flex size-[37.333px] shrink-0 items-center justify-center rounded-full bg-[rgba(196,22,28,0.5)] text-[17.333px] font-semibold leading-[normal] text-[#171717]">
+                            <span className="flex size-[37.333px] shrink-0 items-center justify-center rounded-full bg-[rgba(196,22,28,0.5)] text-[17.333px] font-semibold leading-[normal] text-[#f9f9f9]">
                               ✓
                             </span>
                             <span className="whitespace-nowrap text-[16px] font-semibold leading-[normal] text-white xl:text-[20px]">
@@ -207,7 +213,7 @@ export default function CtaSection() {
                 <div className="flex w-full flex-col gap-[12px] sm:flex-row sm:items-center sm:gap-[32px]">
                   <div className="relative flex flex-1 flex-col gap-[6px]">
                     <label htmlFor="cta-name" className={LABEL_CLASS}>
-                      Full Name*
+                      Full Name<span className="text-[#ed1d23]">*</span>
                     </label>
                     <input
                       id="cta-name"
@@ -241,7 +247,7 @@ export default function CtaSection() {
                 <div className="flex w-full flex-col gap-[12px] sm:flex-row sm:items-center sm:gap-[32px]">
                   <div className="relative flex flex-1 flex-col gap-[6px]">
                     <label htmlFor="cta-phone" className={LABEL_CLASS}>
-                      Mobile Number*
+                      Mobile Number<span className="text-[#ed1d23]">*</span>
                     </label>
                     <input
                       id="cta-phone"
@@ -281,7 +287,7 @@ export default function CtaSection() {
                 <div className="flex w-full flex-col gap-[12px] sm:flex-row sm:items-center sm:gap-[33px]">
                   <div className="relative flex flex-1 flex-col gap-[6px]">
                     <label htmlFor="cta-industry" className={LABEL_CLASS}>
-                      Industry Type*
+                      Industry Type<span className="text-[#ed1d23]">*</span>
                     </label>
                     <select
                       id="cta-industry"
@@ -306,7 +312,7 @@ export default function CtaSection() {
                   </div>
                   <div className="relative flex flex-1 flex-col gap-[6px]">
                     <label htmlFor="cta-sqft" className={LABEL_CLASS}>
-                      Project Sq. Ft*
+                      Project Sq. Ft<span className="text-[#ed1d23]">*</span>
                     </label>
                     <select
                       id="cta-sqft"

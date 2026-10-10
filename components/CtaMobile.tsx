@@ -312,7 +312,7 @@ export default function CtaMobile() {
               >
                 {isSubmitting ? "Submitting..." : "Get My Free Quote →"}
               </button>
-              <p className="w-full text-center text-[12px] font-medium leading-[16px] text-[#5a5a5a]">
+              <p className="w-full text-center text-[12px] font-medium leading-[normal] text-[#5a5a5a]">
                 100% Transparent Consultation with single point project support
               </p>
               {submitError ? (

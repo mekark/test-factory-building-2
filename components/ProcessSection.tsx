@@ -1,12 +1,11 @@
 "use client";
 
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import { useRef } from "react";
 import ProcessMobile from "./ProcessMobile";
 import { useCanvasZoom } from "./useCanvasZoom";
 
-// Inter: sub-heading. Space Grotesk: the red step numbers (both per Figma).
-const inter = Inter({ subsets: ["latin"], weight: ["400"] });
+// Space Grotesk: the red step numbers (per Figma). Everything else is Manrope.
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["700"] });
 
 /* ============================================================
@@ -33,9 +32,9 @@ type Step = {
 const STEPS: Step[] = [
   {
     number: "01",
-    title: "Understanding Your Production Vision",
+    title: "Site & Project Feasibility",
     description:
-      "We study your manufacturing process, production targets, site constraints, and future expansion needs so the project begins with a clear operational foundation.",
+      "Geotechnical, regulatory, and budget checks.",
     icon: "/process/clipboard-check.svg",
     iconSize: 40,
     box: "inset-[8.33%_16.67%]",
@@ -45,9 +44,9 @@ const STEPS: Step[] = [
   },
   {
     number: "02",
-    title: "Smart Factory Design & Engineering",
+    title: "Design & Engineering",
     description:
-      "We shape layout logic, structural direction, service coordination, and delivery planning into a build-ready engineering path for efficient industrial execution.",
+      "In-house engineering, plant layout and utility planning.",
     icon: "/process/drafting-compass.svg",
     iconSize: 40,
     box: "inset-[12.5%]",
@@ -58,49 +57,51 @@ const STEPS: Step[] = [
   },
   {
     number: "03",
-    title: "Building the Industrial Backbone",
+    title: "Civil Works & Foundations",
     description:
-      "Civil works, foundations, steel framing, and primary infrastructure are executed with disciplined sequencing to create a strong operational base.",
-    icon: "/process/factory.svg",
+      "Disciplined sequencing of civil works, steel framing and infrastructure.",
+    icon: "/process/hard-hat.svg",
+    box: "inset-[16.67%_8.33%_20.83%_8.33%]",
+    img: "inset-[-5.5%_-4.13%_-5.5%_-4.12%]",
     iconSize: 40,
     gap: 53,
     titleLeading: 22.667,
   },
   {
     number: "04",
-    title: "Integrating Plant Utilities & Systems",
+    title: "MEP Integration",
     description:
-      "Electrical systems, piping, mechanical services, and water treatment infrastructure are integrated so the facility works as one coordinated plant environment.",
-    icon: "/process/wrench.svg",
-    iconSize: 41,
+      "Electrical systems, piping, mechanical works and utility services.",
+    icon: "/process/cable.svg",
+    box: "inset-[12.5%_8.33%]",
+    img: "inset-[-4.58%_-4.13%]",
+    iconSize: 40,
     gap: 54,
     titleWidth: 271,
     titleLeading: 24,
   },
   {
     number: "05",
-    title: "Ready for Production",
+    title: "Quality Validation",
     description:
-      "Testing, commissioning, final checks, and closeout are completed so the facility is handed over ready for safe and stable manufacturing operations.",
-    icon: "/process/circle-check.svg",
+      "Inspection, installation & compliance checks.",
+    icon: "/process/shield-check.svg",
     iconSize: 40,
-    box: "inset-[8.33%]",
-    img: "inset-[-4.13%]",
+    box: "inset-[8.33%_16.67%_8.32%_16.67%]",
+    img: "inset-[-4.12%_-5.16%]",
     gap: 53,
     titleLeading: 24,
     descWidth: 271,
   },
   {
-    // Step 06 is an unfinished placeholder in the Figma design ("-" title and body).
     number: "06",
-    title: "-",
-    description: "-",
-    icon: "/process/calendar-check.svg",
+    title: "Handover & After-Sales",
+    description: "Snag clearance, documentation, and support.",
+    icon: "/process/handshake.svg",
     iconSize: 40,
-    box: "inset-[8.33%_12.5%_12.5%_12.5%]",
-    img: "inset-[-4.34%_-4.58%]",
+    box: "inset-[12.5%_8.33%_11.99%_8.33%]",
+    img: "inset-[-4.55%_-4.13%]",
     gap: 54,
-    titleWidth: 162,
     titleLeading: 24,
   },
 ];
@@ -131,15 +132,16 @@ export default function ProcessSection() {
           <div className="flex flex-col items-start gap-[32px] sm:gap-[40px] xl:gap-[50px]">
             {/* ---------- Heading + sub-heading ---------- */}
             <div className="flex flex-col items-start gap-[12px] xl:gap-[16px]">
-              <h2 className="text-[40px] font-bold leading-[1.15] text-[#0f172a] sm:text-[54px] xl:w-[1015px] xl:text-[66px] xl:leading-[73.333px]">
-                Our Process
+              <h2 className="text-[40px] font-bold leading-[1.15] text-[#0f172a] sm:text-[54px] xl:whitespace-nowrap xl:text-[66px] xl:leading-[73.333px]">
+                Our <span className="text-[#ed1d23]">Turnkey Factory</span>{" "}
+                Construction
               </h2>
               <p
-                className={`${inter.className} text-[16px] font-normal leading-[1.5] text-[#64748b] sm:text-[18px] xl:whitespace-nowrap xl:text-[24px] xl:leading-[20px]`}
+                className={`text-[16px] font-normal leading-[1.5] text-[#64748b] sm:text-[18px] xl:w-[1083px] xl:text-[24px] xl:leading-[32px]`}
               >
-                A connected five-step project path that moves from production
-                intent to engineering, execution, systems integration, and
-                production-ready handover.
+                As a turnkey factory contractor and industrial EPC company, we
+                take you from the first consultation to final handover through
+                a proven 6-step process.
               </p>
             </div>
 
@@ -181,12 +183,12 @@ export default function ProcessSection() {
                   {/* Step number, title and description */}
                   <div className="flex w-full flex-col items-start gap-[12px]">
                     <p
-                      className={`${spaceGrotesk.className} text-[26px] font-bold leading-[22px] text-[#ed1d23] ${step.number === "06" ? "ml-px" : ""}`}
+                      className={`${spaceGrotesk.className} text-[26px] font-bold leading-[21.333px] text-[#ed1d23]`}
                     >
                       {step.number}
                     </p>
                     <h3
-                      className="max-w-full text-[21px] font-bold text-black"
+                      className="max-w-full text-[21px] font-bold text-[#1a1a1a]"
                       style={{
                         lineHeight: `${step.titleLeading}px`,
                         width: step.titleWidth,
@@ -195,7 +197,7 @@ export default function ProcessSection() {
                       {step.title}
                     </h3>
                     <p
-                      className={`max-w-full text-[18px] font-normal leading-[22.667px] text-[#64748b] ${step.number === "06" ? "flex min-h-[45.333px] items-center" : ""}`}
+                      className={`max-w-full text-[18px] font-normal leading-[22.667px] text-[#64748b]`}
                       style={{ width: step.descWidth }}
                     >
                       {step.description}

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Inter } from "next/font/google";
 import { PHONE_NUMBER, WHATSAPP_HREF } from "../lib/contact";
 import {
   EnquiryValues,
@@ -8,6 +9,9 @@ import {
   SQFT_OPTIONS,
   useEnquiryForm,
 } from "./useEnquiryForm";
+
+// Inter is only used by the hero badge (per Figma).
+const inter = Inter({ subsets: ["latin"], weight: ["500"] });
 
 /* ============================================================
    MOBILE HERO (Figma "Section", 390 × 1690)
@@ -19,21 +23,27 @@ import {
    ============================================================ */
 
 const FEATURES = [
-  "Complete Turnkey Factory Construction – From Design to Handover",
-  "Factory Construction Delivered in as Fast as 150 Days*",
-  "Advanced In-House Manufacturing for Superior Quality",
-  "Industrial EPC Contractor with ISO-Certified Standards",
-  "Dedicated Project Management for On-Time Delivery",
-  "Trusted by 500+ Industrial & Manufacturing Clients",
+  "Automotive, EV, Electronics, Electrical & Semiconductor.",
+  "Renewable Energy, Engineering, Electrical Vehicle.",
+  "Cold Storage & Clean Rooms, Machinery & Heavy Manufacturing.",
+  "Textile, Pharmaceutical, Chemical & Life Sciences.",
+  "Metals, Steel, Building Materials, Packaging & Plastics, Logistics.",
+  "Apparel, Leather, Food Processing, Beverage, FMCG.",
 ] as const;
 
-// The four client logos shown on mobile (same files as the desktop strip).
-// size = logo box inside the 64×40 tile, as in Figma.
+// The four client logos shown on mobile. size = logo box inside the 64×40 tile, as in Figma;
+// `crop` is Figma's custom placement of the photo inside that box.
 const LOGOS = [
-  { name: "VWU", src: "/hero/logos/vwu.webp", w: 39, h: 39 },
+  { name: "L&T", src: "/hero/logos/mobile-logo-1.webp", w: 64, h: 35 },
   { name: "Voltas", src: "/hero/logos/voltas.webp", w: 50, h: 50 },
   { name: "TVS", src: "/hero/logos/tvs.webp", w: 52, h: 53 },
-  { name: "Tata Electronics", src: "/hero/logos/tata.webp", w: 54, h: 54 },
+  {
+    name: "Tata Electronics",
+    src: "/hero/logos/mobile-logo-4.webp",
+    w: 32,
+    h: 32,
+    crop: { left: "-100%", top: "-69.9%", width: "300%", height: "301.97%" },
+  },
 ] as const;
 
 // Suffix colours differ slightly per stat in the design.
@@ -125,9 +135,9 @@ export default function HeroMobile() {
         <div className="flex flex-col gap-[12px]">
           <div className="-mx-5 flex flex-col gap-[19px]">
             {/* Badge */}
-            <p className="ml-5 flex h-[28px] w-fit items-center gap-2 rounded-full border border-solid border-white/20 px-3 text-[10px] font-medium leading-[16px] text-white">
+            <p className={`${inter.className} ml-5 flex h-[28px] w-fit items-center gap-2 rounded-full border border-solid border-white/20 px-3 text-[10px] font-medium leading-[normal] text-white`}>
               <span aria-hidden className="size-2 shrink-0 rounded-full bg-[#e40015]" />
-              Indias Trusted Factory &amp; EPC Partner
+              Turnkey Factory Construction &amp; Industrial EPC Company
             </p>
 
             {/* Hero photo (full width) with the two-line headline over its lower half */}
@@ -144,28 +154,36 @@ export default function HeroMobile() {
               />
               <div className="absolute bottom-px left-0 h-[108px] w-full bg-[linear-gradient(182.77deg,rgba(30,30,30,0)_1.0095%,#1e1e1e_99.312%)]" />
               <h1>
-                <span className="absolute left-5 top-[166px] block w-[350px] -translate-y-1/2 text-[22px] font-semibold leading-[24px] text-white">
-                  Turnkey Factory Construction
+                <span className="absolute left-5 top-[166px] block w-[350px] -translate-y-1/2 text-[22px] font-bold leading-[normal] text-white">
+                  Build Factory. Design to Delivery
                 </span>
-                <span className="absolute left-[-1px] top-[185px] block bg-[#c4161c] py-px pl-5 pr-2 text-[16px] font-semibold leading-[normal] text-white">
-                  Industrial EPC Solutions
+                <span className="absolute left-[-1px] top-[185px] block bg-[#c4161c] py-px pl-5 pr-2 text-[16px] font-bold leading-[normal] text-white">
+                  Construction &amp; Turnkey EPC
                 </span>
               </h1>
             </div>
           </div>
 
-          <p className="w-full whitespace-pre-wrap text-[14px] font-normal leading-[19px] text-[#f3f3f3]">
-            Factory Construction Company for Manufacturing
-            <br />
-            Plants, Industrial Buildings &amp; Factory
-            <br />
-            {`Sheds  & Industrial Plant Builders`}
-          </p>
+          <div className="w-full text-[14px] font-normal leading-[normal] text-[#a9a9a9]">
+            <p>
+              <span className="font-bold text-[#ed1d23]">MEKARK</span> - Builds
+              Every Structure You Want.
+            </p>
+            <p>
+              All kinds of Industrial, Factory Construction &amp; Expansion
+              projects – <span className="font-bold text-white">ALL INDIA</span>
+            </p>
+          </div>
+
         </div>
 
         {/* ---------- Feature list (red chevrons) ---------- */}
+        <div className="flex flex-col gap-[6px]">
+        <p className="w-full text-[14px] font-bold leading-[normal] text-[#f3f3f3]">
+          In-House PEB Manufacturing - Civil - PEB – MEP - Turnkey EPC.
+        </p>
         <ul className="flex flex-col gap-[6px]">
-          {FEATURES.map((feature, index) => (
+          {FEATURES.map((feature) => (
             <li key={feature} className="flex items-center gap-2 rounded-[12px] px-3">
               <img
                 src="/hero/mobile/chevron.svg"
@@ -175,13 +193,14 @@ export default function HeroMobile() {
                 className="block size-[15px] shrink-0"
               />
               <span
-                className={`min-w-0 flex-1 text-[12px] font-normal text-white/70 ${index === 0 ? "leading-[16px]" : "leading-[20px]"}`}
+                className={`min-w-0 flex-1 text-[12px] font-normal text-[#b5b5b5] leading-[normal]`}
               >
                 {feature}
               </span>
             </li>
           ))}
         </ul>
+        </div>
 
         {/* ---------- "Trusted Across India" logo card ---------- */}
         <div className="flex flex-col gap-4 rounded-[10px] bg-[linear-gradient(175.66deg,rgb(8,9,10)_1.2889%,rgb(101,69,40)_91.175%)] px-4 py-6">
@@ -196,14 +215,28 @@ export default function HeroMobile() {
                 key={logo.name}
                 className="flex h-[40px] min-w-0 max-w-[64px] flex-1 basis-0 items-center justify-center overflow-hidden rounded-[6px] bg-[#f9f6f7]"
               >
-                <img
-                  src={logo.src}
-                  alt={logo.name}
-                  width={logo.w}
-                  height={logo.h}
-                  className="block shrink-0 object-cover"
-                  style={{ width: logo.w, height: logo.h }}
-                />
+                {"crop" in logo ? (
+                  <div
+                    className="relative shrink-0 overflow-hidden"
+                    style={{ width: logo.w, height: logo.h }}
+                  >
+                    <img
+                      src={logo.src}
+                      alt={logo.name}
+                      className="absolute max-w-none"
+                      style={logo.crop}
+                    />
+                  </div>
+                ) : (
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    width={logo.w}
+                    height={logo.h}
+                    className="block shrink-0 object-cover"
+                    style={{ width: logo.w, height: logo.h }}
+                  />
+                )}
               </div>
             ))}
           </div>
@@ -383,9 +416,9 @@ export default function HeroMobile() {
                 disabled={isSubmitting}
                 className="flex w-full items-center justify-center rounded-[10px] bg-[#c4161c] px-6 py-[13px] text-center text-[14px] font-bold leading-[19px] text-[#f5f5f5] drop-shadow-[0px_8.81px_17.62px_rgba(196,22,28,0.3)] transition-colors hover:bg-[#ad1318] disabled:cursor-not-allowed disabled:opacity-80"
               >
-                {isSubmitting ? "Submitting..." : "Get My Free Quote →"}
+                {isSubmitting ? "Submitting..." : "Get a Free Quote →"}
               </button>
-              <p className="w-full text-center text-[12px] font-medium leading-[16px] text-[#8a8a8a]">
+              <p className="w-full text-center text-[12px] font-medium leading-[normal] text-[#c1c1c1]">
                 100% Transparent Consultation with single point project support
               </p>
               {submitError ? (

@@ -8,17 +8,42 @@ import { useState } from "react";
    Shown below 1280px only; the desktop section is untouched.
    ============================================================ */
 
-// Five accordion rows. Each opens to reveal a short description.
+// Six accordion rows. Each opens to reveal a short description.
 const POINTS = [
-  { label: "3000+ MT High-Capacity Fabrication" },
-  { label: "Fully Automated Steel Production" },
-  { label: "Advanced CNC-Based Precision Engineering" },
-  { label: "ISO-Certified Quality Systems" },
-  { label: "30–40% Faster Project Delivery" },
+  {
+    label: "Cost Shaped Before Site",
+    description:
+      "Value engineering reviews structural choices and material use early, helping control project cost before fabrication and construction begin.",
+  },
+  {
+    label: "Production Shapes the Building",
+    description:
+      "Equipment loads, movement, utilities and future expansion are considered while the industrial building is being engineered.",
+  },
+  {
+    label: "Schedule Starts in Our Factory",
+    description:
+      "With 6,00,000 sq. ft. of manufacturing space and 40,000 MT annual fabrication capacity, structural steel production stays directly within Mekark's project control.",
+  },
+  {
+    label: "One Turnkey Responsibility",
+    description:
+      "As your industrial construction contractor, Mekark connects design, civil works, structural steel, MEP and project execution through one EPC delivery model.",
+  },
+  {
+    label: "Expansion Planned Forward",
+    description:
+      "Factory extensions and manufacturing plant expansion can be considered during the original engineering, reducing what needs to be reworked when the facility grows.",
+  },
+  {
+    label: "Compliance Built In",
+    description:
+      "ISO 9001:2015 and CE-certified processes support fabrication quality with documentation your project and compliance teams can verify.",
+  },
 ] as const;
 
 export default function FactoryAdvantageMobile() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     /* ==========================================================
@@ -44,11 +69,14 @@ export default function FactoryAdvantageMobile() {
         <div className="flex w-full flex-col items-start gap-3">
           {/* Figma trims the heading's text box to cap height (about 7px off top and bottom) */}
           <h2 className="-mb-[6px] -mt-[8px] w-full text-[28px] font-bold leading-[34px] text-[#030303]">
-            Why Industries Choose Mekark for Their Factory Buildings
+            Why Top Industries
+            <br />
+            Choose Mekark
           </h2>
           <p className="w-full text-[12px] font-normal leading-[19px] text-[#424242]">
-            Leading the industrial construction sector with unmatched capacity
-            and precision.
+            The reasons a Plant Director signs off on a contractor are rarely the
+            reasons in the brochure. Here&apos;s what actually moves the decision
+            at the CFO&apos;s desk.
           </p>
         </div>
 
@@ -67,7 +95,7 @@ export default function FactoryAdvantageMobile() {
                   type="button"
                   aria-expanded={isOpen}
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex min-h-[26px] w-full cursor-pointer items-center gap-[10px] text-left text-[16px] font-bold leading-[18px] text-white"
+                  className="flex min-h-[26px] w-full cursor-pointer font-sans items-center gap-[10px] text-left text-[16px] font-bold leading-[18px] text-white"
                 >
                   <span className="w-[24px] shrink-0">{index + 1}.</span>
                   <span className="min-w-0 flex-1">{point.label}</span>
@@ -84,9 +112,7 @@ export default function FactoryAdvantageMobile() {
                 >
                   <div className="overflow-hidden">
                     <p className="pl-[24px] pr-[26px] pt-[10px] text-[14px] font-medium leading-[17px] text-white">
-                      Dummy text: Lorem ipsum dolor sit amet, consectetur
-                      adipiscing elit, sed do eiusmod tempor incididunt ut
-                      labore et dolore magna aliqua.
+                      {point.description}
                     </p>
                   </div>
                 </div>
