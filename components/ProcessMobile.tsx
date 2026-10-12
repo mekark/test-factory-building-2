@@ -84,7 +84,7 @@ export default function ProcessMobile() {
        MOBILE FRAME — white, one 350px column with 20px side padding
        ========================================================== */
     <div className="bg-white px-5 pb-12 pt-8 font-sans xl:hidden">
-      <div className="mx-auto flex w-full max-w-[350px] flex-col items-start gap-[26px]">
+      <div className="mx-auto flex w-full flex-col items-start gap-[26px]">
         {/* ---------- Heading + sub-heading ---------- */}
         <div className="flex w-full flex-col items-start gap-[6px]">
           <h2 className="w-full text-[28px] font-bold leading-[34px] text-[#0f172a]">

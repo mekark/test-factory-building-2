@@ -41,7 +41,7 @@ const CLIENT_LOGOS = [
     dx: -0.5,
     dy: 0,
   },
-  { name: "CAT", src: "/hero/logos/cat.webp", w: 36, h: 36, dx: 0, dy: 0 },
+  { name: "CAT", src: "/hero/logos/cat.webp", w: 56, h: 56, dx: 0, dy: 0 },
   { name: "TVS", src: "/hero/logos/tvs.webp", w: 75, h: 75, dx: 0.5, dy: 0 },
   {
     name: "Tata Electronics",
@@ -75,22 +75,6 @@ const CLIENT_LOGOS = [
     h: 31,
     dx: 0.5,
     dy: -0.5,
-  },
-  {
-    name: "Sanmar",
-    src: "/hero/logos/sanmar-1.webp",
-    w: 51,
-    h: 51,
-    dx: 0.5,
-    dy: -0.5,
-  },
-  {
-    name: "Sanmar Group",
-    src: "/hero/logos/sanmar-2.webp",
-    w: 41,
-    h: 40,
-    dx: 0.5,
-    dy: 0,
   },
   {
     name: "Reliance",

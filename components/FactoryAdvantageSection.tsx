@@ -43,6 +43,19 @@ const POINTS = [
   },
 ] as const;
 
+// Desktop row widths from Figma: rows step in around the person, then back out.
+const ROW_WIDTHS = [
+  "xl:w-[700px]",
+  "xl:w-[666px]",
+  "xl:w-[645px]",
+  "xl:w-[645px]",
+  "xl:w-[666px]",
+  "xl:w-[700px]",
+] as const;
+
+// Desktop min row heights from Figma (single-line rows are fixed-height; two-line rows size to content).
+const ROW_MIN_HEIGHTS = ["xl:min-h-[60px]", "xl:min-h-[60px]", "", "", "xl:min-h-[67px]", ""] as const;
+
 /* ============================================================
    FACTORY ADVANTAGE SECTION
    ============================================================ */
@@ -84,14 +97,14 @@ export default function FactoryAdvantageSection() {
 
             {/* Layers 2–4 (desktop only): red L-shaped panel + dark gradient overlay */}
             <div className="absolute left-[1004px] top-0 hidden h-[568px] w-[916px] bg-[#e60f1a] xl:block" />
-            <div className="absolute left-[1047px] top-[514px] hidden h-[224px] w-[873px] bg-[#e60f1a] xl:block" />
+            <div className="absolute left-[1047px] top-[489px] hidden h-[224px] w-[873px] bg-[#e60f1a] xl:block" />
             <Image
               width={916}
               height={399}
               sizes="916px"
               src="/advantage/overlay-new.webp"
               alt=""
-              className="pointer-events-none absolute left-[1004px] top-[-2.67px] hidden h-[398.667px] w-[916px] max-w-none object-cover xl:block"
+              className="pointer-events-none absolute left-[1004px] top-[-3px] hidden h-[398.667px] w-[916px] max-w-none object-cover xl:block"
             />
 
             {/* Layer 6: person cutout. Sits above the red panel, so it is
@@ -103,7 +116,7 @@ export default function FactoryAdvantageSection() {
               ====================================================== */}
           <div className="relative z-10 bg-[#e60f1a] bg-[linear-gradient(180deg,#2a0306_0%,#e60f1a_55%)] px-5 pb-12 pt-10 sm:px-8 sm:pt-12 xl:static xl:bg-none xl:p-0">
             {/* Heading + sub-heading stacked (22px gap) so a wrapped heading never overlaps the sub-heading */}
-            <div className="xl:absolute xl:left-[1099px] xl:top-[46px] xl:flex xl:w-[783px] xl:flex-col xl:gap-[10px]">
+            <div className="xl:absolute xl:left-[1102px] xl:top-[25px] xl:flex xl:w-[783px] xl:flex-col xl:gap-[17px] xl:py-[6px]">
               {/* Heading (Bold 66px, #030303) */}
               <h2 className="text-[30px] font-extrabold leading-[1.15] tracking-[-0.03em] text-white sm:text-[40px] xl:text-[53.333px] xl:font-extrabold xl:leading-[60px] xl:tracking-[-1.3333px] xl:text-[#030303]">
                 Why Top Industries <br className="hidden xl:block" />
@@ -112,28 +125,27 @@ export default function FactoryAdvantageSection() {
 
               {/* Sub-heading (Regular 20px, #424242) */}
               <p className="mt-4 text-[16px] font-normal leading-[1.5] text-[#ffd0d3] sm:text-[18px] xl:mt-0 xl:w-[709px] xl:text-[21.333px] xl:leading-[28px] xl:text-[#424242]">
-                India&apos;s Leading Industrial Factory Construction &amp; Expansion
-                Company
+                India’s Leading Industrial Factory Construction
               </p>
             </div>
 
             {/* Points list: right-aligned rows with staggered widths, bottom dividers and chevrons */}
-            <ul className="mt-8 flex flex-col gap-[14px] xl:absolute xl:left-[1099px] xl:top-[216px] xl:mt-0 xl:h-[523px] xl:w-[750px] xl:items-end xl:gap-[10px] xl:overflow-y-auto xl:[scrollbar-width:none] xl:[&::-webkit-scrollbar]:hidden">
+            <ul className="mt-8 flex flex-col gap-[14px] xl:absolute xl:left-[1102px] xl:top-[214px] xl:mt-0 xl:h-[454px] xl:w-[710px] xl:items-end xl:gap-[10px] xl:overflow-y-auto xl:pt-[5px] xl:[scrollbar-width:none] xl:[&::-webkit-scrollbar]:hidden">
               {POINTS.map((point, i) => (
                 <li
                   key={point.label}
-                  className={`text-white xl:w-[718px] ${i === POINTS.length - 1 ? "" : "border-b-[1.333px] border-[#e58282]"}`}
+                  className={`shrink-0 text-white ${ROW_WIDTHS[i]} ${ROW_MIN_HEIGHTS[i]} ${i === POINTS.length - 1 ? "" : "border-b-[1.333px] border-[#e58282]"}`}
                 >
                   <button
                     type="button"
                     aria-expanded={openIndex === i}
                     onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                    className="flex w-full cursor-pointer items-center gap-[10px] font-sans text-left xl:pb-[13.333px] xl:pr-[19px] xl:pt-[12px]"
+                    className="flex w-full cursor-pointer items-center gap-[10px] font-sans text-left xl:gap-[15px] xl:pb-[13.333px] xl:pt-[12px]"
                   >
-                    <span className="text-[18px] font-semibold leading-[26px] sm:text-[22px] xl:w-[27px] xl:shrink-0 xl:text-[24px] xl:leading-[29.867px]">
+                    <span className="text-[18px] font-bold leading-[26px] sm:text-[22px] xl:self-start xl:w-[22px] xl:shrink-0 xl:text-[24px] xl:leading-[29.867px]">
                       {i + 1}.
                     </span>
-                    <span className="block flex-1 text-[18px] font-semibold leading-[26px] sm:text-[22px] sm:leading-[30px] xl:w-[492px] xl:flex-none xl:text-[24px] xl:leading-[29.867px]">
+                    <span className="block flex-1 text-[18px] font-bold leading-[26px] sm:text-[22px] sm:leading-[30px] xl:w-[492px] xl:flex-none xl:text-[24px] xl:leading-[29.867px]">
                       {point.label}
                     </span>
                     <img
@@ -148,7 +160,7 @@ export default function FactoryAdvantageSection() {
                     className={`grid transition-[grid-template-rows] duration-300 ${openIndex === i ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
                   >
                     <div className="overflow-hidden">
-                      <p className="pb-[14px] pl-[37px] pr-[40px] text-[17px] font-medium leading-normal text-white xl:w-[669px]">
+                      <p className="pb-[14px] pl-[37px] pr-[40px] text-[17px] font-medium leading-normal text-white xl:w-[632px]">
                         {point.description}
                       </p>
                     </div>

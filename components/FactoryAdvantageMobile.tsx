@@ -49,7 +49,7 @@ export default function FactoryAdvantageMobile() {
     /* ==========================================================
        MOBILE FRAME — one 390px column
        ========================================================== */
-    <div className="mx-auto w-full max-w-[390px] bg-[#f9f6f7] font-sans xl:hidden">
+    <div className="w-full bg-[#f9f6f7] font-sans xl:hidden">
       {/* ---------- Photo banner: factory billboard with the person cutout ---------- */}
       <div className="relative h-[249px] w-full overflow-hidden">
         <Image
@@ -57,9 +57,9 @@ export default function FactoryAdvantageMobile() {
           alt="Mekark factory under construction with a billboard reading: we build factories, you build future"
           width={1200}
           height={541}
-          sizes="617px"
+          sizes="100vw"
           priority
-          className="pointer-events-none absolute left-0 top-[-13px] h-[278px] w-[617px] max-w-none"
+          className="pointer-events-none absolute inset-0 h-full w-full max-w-none object-cover object-[30%_40%]"
         />
       </div>
 
@@ -74,9 +74,7 @@ export default function FactoryAdvantageMobile() {
             Choose Mekark
           </h2>
           <p className="w-full text-[12px] font-normal leading-[19px] text-[#424242]">
-            The reasons a Plant Director signs off on a contractor are rarely the
-            reasons in the brochure. Here&apos;s what actually moves the decision
-            at the CFO&apos;s desk.
+            India’s Leading Industrial Factory Construction
           </p>
         </div>
 

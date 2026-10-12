@@ -47,9 +47,9 @@ export default function MarketAdvantageMobile() {
        MOBILE FRAME — full-width #0a0a0a with one 390px column
        ========================================================== */
     <div className="bg-[#0a0a0a] font-sans xl:hidden">
-      <div className="mx-auto flex w-full max-w-[390px] flex-col items-start gap-[6px] p-5 [word-break:break-word]">
+      <div className="mx-auto flex w-full flex-col items-start gap-[6px] p-5 [word-break:break-word]">
         {/* ---------- Heading + sub-heading ---------- */}
-        <div className="flex w-[342px] max-w-full flex-col items-start gap-3">
+        <div className="flex w-full flex-col items-start gap-3">
           <h2 className="w-full text-[28px] font-extrabold leading-[34px] text-white">
             Why Top Industries <span className="text-[#e53935]">Choose Mekark</span>
           </h2>
@@ -59,7 +59,7 @@ export default function MarketAdvantageMobile() {
         </div>
 
         {/* ---------- Numbered list: hairline between rows and after the last ---------- */}
-        <ol className="flex w-[342px] max-w-full flex-col items-start">
+        <ol className="flex w-full flex-col items-start">
           {FEATURES.map((feature) => (
             <li
               key={feature.number}

@@ -79,7 +79,7 @@ export default function HeroMobile() {
     /* ==========================================================
        MOBILE FRAME — one 390px column, page background shows beside it on tablets
        ========================================================== */
-    <div className="relative mx-auto w-full max-w-[390px] overflow-hidden bg-[#060606] pb-[36px] pt-[16px] font-sans xl:hidden">
+    <div className="relative mx-auto w-full overflow-hidden bg-[#060606] pb-[36px] pt-[16px] font-sans xl:hidden">
       {/* ======================================================
           BACKGROUND STACK (bottom → top), positioned as in Figma.
           Left offsets/widths are % of the frame so it scales with the column;
@@ -207,13 +207,13 @@ export default function HeroMobile() {
           <p className="whitespace-nowrap text-[14px] font-semibold uppercase leading-[20px] text-[#ed1d23]">
             Trusted Across India
           </p>
-          {/* One row always: tiles are 64px wide (Figma) but shrink on narrow phones such as the
-              iPhone SE, and the gap tightens below 380px so all four logos still fit. */}
-          <div className="flex w-full flex-nowrap items-start gap-x-[18px] max-[379px]:gap-x-2">
+          {/* One row always: tiles share the full card width equally, shrinking on narrow phones such as the
+              iPhone SE; the gap tightens below 380px so all four logos still fit. */}
+          <div className="flex w-full flex-nowrap items-start gap-x-3 max-[379px]:gap-x-2">
             {LOGOS.map((logo) => (
               <div
                 key={logo.name}
-                className="flex h-[40px] min-w-0 max-w-[64px] flex-1 basis-0 items-center justify-center overflow-hidden rounded-[6px] bg-[#f9f6f7]"
+                className="flex h-[44px] min-w-0 flex-1 basis-0 items-center justify-center overflow-hidden rounded-[6px] bg-[#f9f6f7]"
               >
                 {"crop" in logo ? (
                   <div

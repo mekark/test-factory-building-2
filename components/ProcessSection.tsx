@@ -205,15 +205,6 @@ export default function ProcessSection() {
                   </div>
                 </article>
               ))}
-
-              {/* Bottom rule spanning all six columns (Figma "Line" SVG) */}
-              <div className="relative col-span-full hidden h-0 xl:block">
-                <img
-                  src="/process/line.svg"
-                  alt=""
-                  className="absolute inset-x-0 top-[-0.67px] block h-[1.333px] w-full max-w-none"
-                />
-              </div>
             </div>
           </div>
         </div>
