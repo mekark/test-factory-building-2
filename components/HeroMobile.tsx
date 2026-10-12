@@ -35,7 +35,7 @@ const FEATURES = [
 // `crop` is Figma's custom placement of the photo inside that box.
 const LOGOS = [
   { name: "L&T", src: "/hero/logos/mobile-logo-1.webp", w: 64, h: 35 },
-  { name: "Voltas", src: "/hero/logos/voltas.webp", w: 50, h: 50 },
+  { name: "CAT", src: "/hero/logos/cat.webp", w: 36, h: 36 },
   { name: "TVS", src: "/hero/logos/tvs.webp", w: 52, h: 53 },
   {
     name: "Tata Electronics",
@@ -233,8 +233,8 @@ export default function HeroMobile() {
                     alt={logo.name}
                     width={logo.w}
                     height={logo.h}
-                    className="block shrink-0 object-cover"
-                    style={{ width: logo.w, height: logo.h }}
+                    className="block shrink object-contain"
+                    style={{ width: logo.w, height: logo.h, maxWidth: "100%" }}
                   />
                 )}
               </div>

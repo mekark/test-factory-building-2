@@ -41,6 +41,7 @@ const CLIENT_LOGOS = [
     dx: -0.5,
     dy: 0,
   },
+  { name: "CAT", src: "/hero/logos/cat.webp", w: 36, h: 36, dx: 0, dy: 0 },
   { name: "TVS", src: "/hero/logos/tvs.webp", w: 75, h: 75, dx: 0.5, dy: 0 },
   {
     name: "Tata Electronics",
@@ -326,7 +327,7 @@ export default function HeroSection() {
                           width={logo.w}
                           height={logo.h}
                           loading="lazy"
-                          className="pointer-events-none absolute left-1/2 top-1/2 max-w-none object-cover"
+                          className="pointer-events-none absolute left-1/2 top-1/2 max-w-none object-contain"
                           style={{
                             width: logo.w,
                             height: logo.h,
