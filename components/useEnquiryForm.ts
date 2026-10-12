@@ -18,6 +18,7 @@ export const INDUSTRY_TYPES = [
   "Metals, Steel & Building Materials",
   "Plastics, Packaging & Consumer Products",
   "Renewable Energy & Clean-Tech Manufacturing",
+  "Others",
 ];
 
 export const SQFT_OPTIONS = [
