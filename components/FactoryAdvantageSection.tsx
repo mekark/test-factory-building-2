@@ -130,7 +130,7 @@ export default function FactoryAdvantageSection() {
             </div>
 
             {/* Points list: right-aligned rows with staggered widths, bottom dividers and chevrons */}
-            <ul className="mt-8 flex flex-col gap-[14px] xl:absolute xl:left-[1102px] xl:top-[214px] xl:mt-0 xl:h-[454px] xl:w-[710px] xl:items-end xl:gap-[10px] xl:overflow-y-auto xl:pt-[5px] xl:[scrollbar-width:none] xl:[&::-webkit-scrollbar]:hidden">
+            <ul className="mt-8 flex flex-col gap-[14px] xl:absolute xl:left-[1102px] xl:top-[214px] xl:mt-0 xl:h-[499px] xl:w-[710px] xl:items-end xl:gap-[10px] xl:overflow-y-auto xl:pt-[5px] xl:[scrollbar-width:none] xl:[&::-webkit-scrollbar]:hidden">
               {POINTS.map((point, i) => (
                 <li
                   key={point.label}
