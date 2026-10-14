@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import DeferredGoogleTagManager from "../components/DeferredGoogleTagManager";
+import Footer from "../components/Footer";
 import "./globals.css";
 
 const GTM_ID = "GTM-5SBMM86H";
@@ -36,6 +37,7 @@ export default function RootLayout({
           />
         </noscript>
         <div className="relative">{children}</div>
+        <Footer />
         <DeferredGoogleTagManager gtmId={GTM_ID} />
       </body>
     </html>
