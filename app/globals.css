@@ -4,6 +4,17 @@
   --font-sans: var(--font-manrope), "Segoe UI", sans-serif;
 }
 
+/* Native smooth anchor scrolling; the offset keeps the fixed/sticky header
+   from covering the target (e.g. the #contact enquiry form). */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 body {
   background-color: #ffffff;
   color: #18181b;

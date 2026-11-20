@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 /* ============================================================
@@ -31,7 +32,7 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex w-full max-w-[1920px] items-center justify-between px-5 py-3 sm:px-8 xl:px-[80px] xl:py-[17px]">
         {/* Logo: 132 × 46 on desktop */}
-        <a href="#" aria-label="Mekark home" className="block">
+        <Link href="/" aria-label="Mekark home" className="block">
           <Image
             src="/nav/logo.webp"
             alt="Mekark"
@@ -40,14 +41,14 @@ export default function Navbar() {
             priority
             className="h-[34px] w-auto xl:h-[46px]"
           />
-        </a>
+        </Link>
 
         {/* CTA: jumps to the enquiry form at the bottom of the page */}
         <a
           href="#contact"
           className="flex items-center justify-center whitespace-nowrap rounded-[8px] bg-[#c4161c] px-4 py-[8px] text-[14px] font-semibold leading-[normal] text-[#f5f5f5] drop-shadow-[0px_8.809px_17.618px_rgba(196,22,28,0.3)] transition-colors hover:bg-[#ad1318] xl:px-[24px] xl:py-[10px] xl:text-[16px]"
         >
-          Get Free Quote
+          Request an Estimate
         </a>
       </nav>
     </header>

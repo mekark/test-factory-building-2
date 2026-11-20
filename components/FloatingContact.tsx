@@ -14,7 +14,7 @@ const TOOLTIP =
 
 export default function FloatingContact() {
   return (
-    <div className="fixed bottom-5 right-4 z-[60] flex flex-col gap-3 font-sans sm:bottom-6 sm:right-6">
+    <div className="fixed bottom-5 right-4 z-[60] flex flex-col gap-3 font-sans max-md:hidden sm:bottom-6 sm:right-6">
       {/* Call us */}
       <a
         href={`tel:${PHONE_NUMBER}`}

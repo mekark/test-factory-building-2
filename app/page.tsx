@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import CtaSection from "../components/CtaSection";
 import FactoryAdvantageSection from "../components/FactoryAdvantageSection";
 import FloatingContact from "../components/FloatingContact";
@@ -7,26 +8,44 @@ import MarketAdvantageSection from "../components/MarketAdvantageSection";
 import Navbar from "../components/Navbar";
 import ProcessSection from "../components/ProcessSection";
 import ProjectsGallerySection from "../components/ProjectsGallerySection";
+import { ViewportProvider } from "../components/ViewportContext";
 
-export default function Home() {
+// Mobile / tablet hints from the request. Bots that crawl as smartphones
+// (Googlebot, AdsBot-Google-Mobile) carry "Mobile" in the UA too.
+const MOBILE_UA = /Mobi|Android|iPhone|iPad|iPod|Tablet|Silk|Kindle/i;
+
+async function isDesktopRequest() {
+  const h = await headers();
+  const chMobile = h.get("sec-ch-ua-mobile");
+  if (chMobile) return chMobile !== "?1";
+  return !MOBILE_UA.test(h.get("user-agent") ?? "");
+}
+
+export default async function Home() {
+  // One layout per request: the sections render either their mobile or their
+  // desktop markup, never both (no hidden duplicate DOM, headings or ids).
+  const initialDesktop = await isDesktopRequest();
+
   return (
-    <div className="flex min-h-screen flex-col bg-white text-[#18181B]">
-      <Navbar />
-      <FloatingContact />
-      {/* Hero: headline, client logos, stats and enquiry form (Figma "Hero Component") */}
-      <HeroSection />
-      {/* Our Process: six-step project path (Figma "Landing Page") */}
-      <ProcessSection />
-      {/* Market advantage: bento grid of six strengths (Figma "Frame 18") */}
-      {/* <MarketAdvantageSection /> */}
-      {/* Factory advantage: photo banner with five check points (Figma "Frame 270") */}
-      <FactoryAdvantageSection />
-      {/* Projects gallery: six project photos (Figma "Projects gallery") */}
-      <ProjectsGallerySection />
-      {/* FAQ: sticky intro on the left, accordion on the right (Figma "faq") */}
-      <FaqSection />
-      {/* CTA: contact cards and enquiry form (Figma "CTA") */}
-      <CtaSection />
-    </div>
+    <ViewportProvider initialDesktop={initialDesktop}>
+      <div className="flex min-h-screen flex-col bg-white text-[#18181B]">
+        <Navbar />
+        <FloatingContact />
+        {/* Hero: headline, client logos, stats and enquiry form (Figma "Hero Component") */}
+        <HeroSection />
+        {/* Our Process: six-step project path (Figma "Landing Page") */}
+        <ProcessSection />
+        {/* Market advantage: bento grid of six strengths (Figma "Frame 18") */}
+        {/* <MarketAdvantageSection /> */}
+        {/* Factory advantage: photo banner with five check points (Figma "Frame 270") */}
+        <FactoryAdvantageSection />
+        {/* Projects gallery: six project photos (Figma "Projects gallery") */}
+        <ProjectsGallerySection />
+        {/* FAQ: sticky intro on the left, accordion on the right (Figma "faq") */}
+        <FaqSection />
+        {/* CTA: contact cards and enquiry form (Figma "CTA") */}
+        <CtaSection />
+      </div>
+    </ViewportProvider>
   );
 }
