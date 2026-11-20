@@ -270,6 +270,7 @@ export default function CtaSection() {
                       id="cta-name"
                       name="name"
                       type="text"
+                      maxLength={60}
                       placeholder="Your name"
                       value={values.name}
                       onChange={handleChange}
@@ -304,9 +305,10 @@ export default function CtaSection() {
                       id="cta-phone"
                       name="phoneNumber"
                       type="tel"
-                      inputMode="tel"
-                      maxLength={16}
-                      placeholder="+91 98765 43210"
+                  inputMode="numeric"
+                  maxLength={10}
+                  autoComplete="tel-national"
+                      placeholder="98765 43210"
                       value={values.phoneNumber}
                       onChange={handleChange}
                       aria-invalid={Boolean(errors.phoneNumber)}
@@ -567,6 +569,7 @@ function CtaMobile() {
                 <input
                   name="name"
                   type="text"
+                  maxLength={60}
                   aria-label="Full name"
                   placeholder="Enter Your name"
                   value={values.name}
@@ -593,8 +596,9 @@ function CtaMobile() {
                 <input
                   name="phoneNumber"
                   type="tel"
-                  inputMode="tel"
-                  maxLength={16}
+                  inputMode="numeric"
+                  maxLength={10}
+                  autoComplete="tel-national"
                   aria-label="Mobile number"
                   placeholder="Mobile Number*"
                   value={values.phoneNumber}

@@ -50,27 +50,60 @@ const INITIAL_VALUES: EnquiryValues = {
   requirements: "",
 };
 
+// Letters (any language), spaces and a few name punctuation marks; no digits.
+const NAME_ALLOWED = /[^\p{L}\p{M}\s.'-]/gu;
+const LOCATION_ALLOWED = /[^\p{L}\p{M}\s.,'&/()-]/gu;
+const NAME_VALID = /^[\p{L}\p{M}][\p{L}\p{M}\s.'-]*$/u;
+const LOCATION_VALID = /^[\p{L}\p{M}][\p{L}\p{M}\s.,'&/()-]*$/u;
+const EMAIL_VALID =
+  /^[A-Za-z0-9._%+-]+@[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)*\.[A-Za-z]{2,}$/;
+
+const PHONE_LENGTH = 10;
+
+// Cleans a value as the user types or pastes, so invalid characters never land in the field.
+const sanitize = (name: string, value: string): string => {
+  switch (name) {
+    case "name":
+      return value.replace(NAME_ALLOWED, "").replace(/^\s+/, "").slice(0, 60);
+    case "projectLocation":
+      return value.replace(LOCATION_ALLOWED, "").replace(/^\s+/, "").slice(0, 80);
+    case "phoneNumber": {
+      // Pasted numbers like "+91 98765 43210" or "098765 43210" lose their country / trunk prefix.
+      let digits = value.replace(/\D/g, "");
+      if (digits.length > PHONE_LENGTH && digits.startsWith("91")) digits = digits.slice(2);
+      else if (digits.length > PHONE_LENGTH && digits.startsWith("0")) digits = digits.slice(1);
+      return digits.slice(0, PHONE_LENGTH);
+    }
+    case "email":
+      return value.replace(/\s/g, "").slice(0, 80);
+    default:
+      return value;
+  }
+};
+
 const validate = (values: EnquiryValues): EnquiryErrors => {
   const errors: EnquiryErrors = {};
 
-  if (!values.name.trim()) errors.name = "Name is required";
+  const name = values.name.trim();
+  if (!name) errors.name = "Name is required";
+  else if (name.length < 2 || !NAME_VALID.test(name))
+    errors.name = "Enter a valid name (letters only)";
 
-  const phoneDigits = values.phoneNumber.replace(/\D/g, "");
-  if (!phoneDigits) {
+  const location = values.projectLocation.trim();
+  if (location && (location.length < 2 || !LOCATION_VALID.test(location)))
+    errors.projectLocation = "Enter a valid location (letters only)";
+
+  if (!values.phoneNumber) {
     errors.phoneNumber = "Mobile number is required";
-  } else if (phoneDigits.length < 10 || phoneDigits.length > 15) {
-    errors.phoneNumber = "Enter a valid mobile number";
+  } else if (values.phoneNumber.length !== PHONE_LENGTH) {
+    errors.phoneNumber = "Enter a 10-digit mobile number";
   }
 
   if (!values.industryType) errors.industryType = "Select industry type";
   if (!values.sqft) errors.sqft = "Select project sq. ft";
 
-  if (
-    values.email.trim() &&
-    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())
-  ) {
-    errors.email = "Enter a valid email";
-  }
+  const email = values.email.trim();
+  if (email && !EMAIL_VALID.test(email)) errors.email = "Enter a valid email address";
 
   return errors;
 };
@@ -85,7 +118,7 @@ export function useEnquiryForm() {
     event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = event.target;
-    setValues((current) => ({ ...current, [name]: value }));
+    setValues((current) => ({ ...current, [name]: sanitize(name, value) }));
     setErrors((current) => {
       if (!current[name as keyof EnquiryValues]) return current;
       const next = { ...current };

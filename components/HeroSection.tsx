@@ -403,6 +403,7 @@ export default function HeroSection() {
                       id="hero-name"
                       name="name"
                       type="text"
+                      maxLength={60}
                       placeholder="Your name"
                       value={values.name}
                       onChange={handleChange}
@@ -442,9 +443,10 @@ export default function HeroSection() {
                       id="hero-phone"
                       name="phoneNumber"
                       type="tel"
-                      inputMode="tel"
-                      maxLength={16}
-                      placeholder="+91 98765 43210"
+                  inputMode="numeric"
+                  maxLength={10}
+                  autoComplete="tel-national"
+                      placeholder="98765 43210"
                       value={values.phoneNumber}
                       onChange={handleChange}
                       aria-invalid={Boolean(errors.phoneNumber)}
@@ -872,6 +874,7 @@ function HeroMobile() {
                 <input
                   name="name"
                   type="text"
+                  maxLength={60}
                   aria-label="Full name"
                   placeholder="Enter Your name"
                   value={values.name}
@@ -898,8 +901,9 @@ function HeroMobile() {
                 <input
                   name="phoneNumber"
                   type="tel"
-                  inputMode="tel"
-                  maxLength={16}
+                  inputMode="numeric"
+                  maxLength={10}
+                  autoComplete="tel-national"
                   aria-label="Mobile number"
                   placeholder="Mobile Number*"
                   value={values.phoneNumber}
