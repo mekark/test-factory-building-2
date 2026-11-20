@@ -136,7 +136,7 @@ const STATS = [
     label: "Annual Production",
   },
   {
-    value: "175",
+    value: "250",
     suffix: "+",
     suffixColor: "#c4161c",
     label: "Engineering Team",

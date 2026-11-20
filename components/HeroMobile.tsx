@@ -51,7 +51,7 @@ const STATS = [
   { value: "300", suffix: "+", suffixColor: "#c4161c", label: "Projects" },
   { value: "18", suffix: "+", suffixColor: "#cc000a", label: "years Experience" },
   { value: "40,000 ", suffix: "MT", suffixColor: "#c4161c", label: "Annual Production" },
-  { value: "175", suffix: "+", suffixColor: "#c4161c", label: "Engineering Team" },
+  { value: "250", suffix: "+", suffixColor: "#c4161c", label: "Engineering Team" },
 ] as const;
 
 /* ============================================================
