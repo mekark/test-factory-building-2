@@ -566,7 +566,7 @@ export default function HeroSection() {
                   disabled={isSubmitting}
                   className="flex h-[63.867px] w-full items-center justify-center rounded-[9px] bg-[#c4161c] px-[40px] py-[20px] text-center text-[18px] font-bold leading-[normal] text-[#f5f5f5] drop-shadow-[0px_8.809px_17.618px_rgba(196,22,28,0.3)] transition-colors hover:bg-[#ad1318] disabled:cursor-not-allowed disabled:opacity-80"
                 >
-                  {isSubmitting ? "Submitting..." : "Get a Free Quote →"}
+                  {isSubmitting ? "Submitting..." : "Request an Estimate →"}
                 </button>
 
                 <p className="py-px text-center text-[12px] font-medium leading-[normal] tracking-[0.3303px] text-[#c1c1c1]">
@@ -1008,7 +1008,7 @@ function HeroMobile() {
                 disabled={isSubmitting}
                 className="flex w-full items-center justify-center rounded-[10px] bg-[#c4161c] px-6 py-[13px] text-center text-[14px] font-bold leading-[19px] text-[#f5f5f5] drop-shadow-[0px_8.81px_17.62px_rgba(196,22,28,0.3)] transition-colors hover:bg-[#ad1318] disabled:cursor-not-allowed disabled:opacity-80"
               >
-                {isSubmitting ? "Submitting..." : "Get a Free Quote →"}
+                {isSubmitting ? "Submitting..." : "Request an Estimate →"}
               </button>
               <p className="w-full text-center text-[12px] font-medium leading-[normal] text-[#c1c1c1]">
                 100% Transparent Consultation with single point project support

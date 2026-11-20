@@ -411,7 +411,7 @@ export default function CtaSection() {
                 disabled={isSubmitting}
                 className="flex h-[58px] w-full items-center justify-center rounded-[8px] bg-[#c4161c] px-[36px] py-[18px] text-center text-[16px] font-extrabold leading-[normal] text-[#f5f5f5] drop-shadow-[0px_8px_16px_rgba(196,22,28,0.3)] transition-colors hover:bg-[#ad1318] disabled:cursor-not-allowed disabled:opacity-80"
               >
-                {isSubmitting ? "Submitting..." : "Get My Free Quote →"}
+                {isSubmitting ? "Submitting..." : "Request an Estimate →"}
               </button>
 
               <p className="w-full text-center text-[10.667px] font-medium leading-[normal] tracking-[0.3px] text-[#5a5a5a]">
@@ -703,7 +703,7 @@ function CtaMobile() {
                 disabled={isSubmitting}
                 className="flex w-full items-center justify-center rounded-[8px] bg-[#c4161c] px-9 py-[14px] text-center text-[14px] font-semibold leading-[normal] text-[#f5f5f5] drop-shadow-[0px_8px_16px_rgba(196,22,28,0.3)] transition-colors hover:bg-[#ad1318] disabled:cursor-not-allowed disabled:opacity-80"
               >
-                {isSubmitting ? "Submitting..." : "Get My Free Quote →"}
+                {isSubmitting ? "Submitting..." : "Request an Estimate →"}
               </button>
               <p className="w-full text-center text-[12px] font-medium leading-[normal] text-[#5a5a5a]">
                 100% Transparent Consultation with single point project support
