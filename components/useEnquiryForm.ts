@@ -7,6 +7,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 
 const FORM_ENDPOINT = "/api/enquiry-form";
 const THANK_YOU_URL = "/thank-you";
+const SOURCE_NAME = "mekark-turnkey";
 
 export const INDUSTRY_TYPES = [
  "Automotive, EV & Auto Components",
@@ -142,7 +143,6 @@ export function useEnquiryForm() {
     setIsSubmitting(true);
 
     try {
-      // Same payload shape as the original enquiry form; "service" carries the industry type.
       const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
         headers: {
@@ -154,12 +154,11 @@ export function useEnquiryForm() {
           email: values.email.trim(),
           phone: values.phoneNumber.trim(),
           location: values.projectLocation.trim(),
-          company: "",
+          industry: values.industryType,
           sqf: values.sqft,
-          startTimeline: "",
-          budget: "",
           message: values.requirements.trim(),
-          service: values.industryType,
+          sourceName: SOURCE_NAME,
+          sourceDomain: window.location.hostname,
           sourceUrl: window.location.href,
           pageUrl: window.location.href,
         }),
@@ -169,8 +168,7 @@ export function useEnquiryForm() {
 
       if (!response.ok) {
         throw new Error(
-          payload?.message ||
-            "We could not submit your enquiry right now. Please try again.",
+          payload?.message || "Something went wrong. Please try again.",
         );
       }
 
@@ -178,9 +176,11 @@ export function useEnquiryForm() {
       window.location.assign(THANK_YOU_URL);
     } catch (error) {
       setSubmitError(
-        error instanceof Error
-          ? error.message
-          : "We could not submit your enquiry right now. Please try again.",
+        error instanceof TypeError
+          ? "Network error. Please check your internet connection and try again."
+          : error instanceof Error
+            ? error.message
+            : "Something went wrong. Please try again.",
       );
     } finally {
       setIsSubmitting(false);
